@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width:250px;
+            margin:150px auto;
+            
+        }
+        ul li{
+            list-style: none;
+        }
+        #app h2{
+            display: table;
+            text-decoration:underline;
+            line-height: 100px;
+            margin: 0 auto;
+        }
+        input{
+            padding: 5px 30px 5px 3px;
+            float: left;
+            height: 25px;
+        }
+        .demo{
+            overflow: hidden;
+        }
+        .demo button{
+            float: left;
+            height:40px;
+            background:aqua;
+            color: aliceblue;
+            border: 0;
+            width: 44px;
+        }
+        ul{
+            margin-top: 30px;
+        }
+        .item ul li{
+            width:250px;
+            height: 50px;
+            border: 1px solid #a0a0a0;
+        }
+        .item ul li span{
+            width:50px;
+            height:30px;
+            background: #c6c6c6;
+            float: right;
+            margin: 10px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .item ul li{
+            font-size: 16px;
+            line-height:50px;
+        }
+    </style>
+</head>
+<body>
+   <div id="app">
+       <h2>{{title}}</h2>
+       <div class="demo">
+           <input type="text" placeholder="接下来要做什么" v-model='arrs'>
+           <button @click='btn'>添加</button>
+       </div>
+       <div class="item">
+           <ul>
+               <li v-for='ar in arr'>{{ar}}><span @click='dele(this.index)'>{{del}}</span></li>
+           </ul>
+       </div>
+   </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    title:'待办事项',
+                    del:'删除',
+                    arr:['学习js','学习vue'],
+                    arrs:'',
+                },
+                 methods: {
+                     btn:function(){
+                        this.arr.push(this.arrs);
+                         this.arrs='';
+                     },
+                     dele:function(e){
+                        this.arr.splice(e,1)
+                     }
+            }
+            })
+//
+    </script>
+</body>
+</html>
